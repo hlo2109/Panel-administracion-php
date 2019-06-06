@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+html,body{
+    font-family: Montserrat;
+    margin: 0px;
+    color:#333;
+    font-weight: 500;
+}
+.movil{ display: none; }
+.text-center{ text-align: center; }
+.imgIzquierda{
+    float: left;
+    max-width: 400px;
+    margin-right: 10px; 
+    margin-bottom: 10px;
+}
+.imgDerecha{
+    float: Right;
+    max-width: 400px;
+    margin-left: 10px; 
+    margin-bottom: 10px;
+}
+
+.header .container{ border-bottom: 1px solid #ccc; padding-top: 10px; padding-bottom: 10px; }
+.header a{ text-decoration: none; color:#333; }
+.header .logo img{ 
+    max-height: 100px;
+    vertical-align: middle;
+}
+.header .menu ul{ padding: 0px; list-style: none; width: 100%; text-align: right; }
+.header .menu ul li{ display: inline-block; }
+.header .menu ul li a{ display: block; padding-left: 10px; padding-right: 10px; }
+.header .menu ul li a:after{ content: ""; display: block; width: 0%; border-bottom: 5px solid green; transition: all .5s; }
+.header .menu ul li.active a,
+.header .menu ul li:hover a:hover{ color:green; }
+.header .menu ul li.active a:after,
+.header .menu ul li:hover a:after{ width: 100%; }
+
+
+.slider{ padding-top: 20px; }
+
+.owl-carousel .owl-nav button{
+    position: absolute; 
+    top: 36%;
+    outline: none;
+}
+.owl-theme .owl-nav [class*=owl-]:hover{
+    background: none;
+    color: green;
+}
+.owl-carousel .owl-nav button span{ 
+    font-size: 100px;  
+}
+.owl-carousel .owl-nav .owl-next{
+    right: 20px;
+} 
+.owl-carousel .owl-nav .owl-prev{
+    left: 20px;
+}
+.owl-theme .owl-dots button{
+    outline: none;    
+}
+.owl-theme .owl-dots .owl-dot span{
+    background: #7b7b7b;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+    background: green;
+}
+
+.listblog{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.listblog .item{
+    padding: 10px;
+}
+.listblog .item .cont{ 
+    position: relative;  
+    overflow: hidden;  
+}
+.listblog .item .cont .img{
+    width: 100%;
+    height: 400px;    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.listblog .item .cont .text{
+    position: absolute;
+    top: 100%; 
+    left: 0px;
+    height: 100%;
+    width: 100%;    
+    color:#fff;
+    background: rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.listblog .item .cont .text .txt{
+    padding: 10px;
+}   
+.listblog .item .cont:hover .text{
+    top: 0%;
+}
+
+.divparallax{
+    background: url(../images/blog5.jpg);
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.divparallax .container{
+    text-align: center;
+    color:#fff;
+    padding: 20px;
+}
+.divparallax .container h3{
+    font-size: 30px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.divsuscribete{
+    padding: 20px;
+    text-align: center;
+}
+.divsuscribete h3{ 
+    margin-top: 0px;
+}
+.divsuscribete form{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+.divsuscribete form input{
+    height: 48px;
+    width: 100%; 
+    outline: none;
+    padding-left: 10px;
+}
+.divsuscribete form button{
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    background: transparent;
+    border:0px;
+    cursor: pointer;
+}
+.divsuscribete form button i{
+    font-size: 30px;
+    color:green;
+}
+.divsuscribete p{
+    margin-bottom: 0px;
+}
+.footer .container{
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.footer a{
+    color:#333;
+    text-decoration: none;
+}
+.footer .logo img{
+    max-height: 100px;
+    vertical-align: middle;
+}
+.footer .menu ul{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.footer .redes{
+    text-align: right;
+}
+.footer .redes a{
+    font-size: 40px;
+}
+
+
+.divnosotros p{ text-align: justify; }
+
+.divcontacto .container{
+    max-width: 600px;
+}
+.divcontacto .container form .form-control{
+    padding: 10px;
+}
+.divcontacto form label{
+    margin-top: 15px;
+    display: block;
+}
+.divcontacto form input, .divcontacto form  textarea{
+    height: 28px;
+    width: 100%; 
+    outline: none;
+    padding-left: 10px;    
+}
+.divcontacto form  textarea{
+    height: 95px;
+}
+.divcontacto form button{
+    background: green;
+    padding: 10px;
+    color:#fff;
+    border-radius: 10px;
+    outline: none;
+    border:0px;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+@media(max-width:800px){
+    .row{ margin-left: 0px; margin-right: 0px; }
+}
+
+@media(max-width:768px){
+    .pc{ display: none; }
+    .movil{ display: inherit; }
+    .header .menu{ text-align: right; }
+    .header .menu .btnmenu{ display: inline-block; font-size: 30px; cursor: pointer; }
+    .header .menu ul.pc{ 
+        position: fixed; 
+        height: 100%; 
+        width: 150px; 
+        top: 0px;
+        left: -100%;
+        background: #fff;
+        margin: 0px;
+        transition: all .5s;
+        display: block;
+        z-index: 1000;
+    }
+    .header .menu ul.pc.left{
+        left: 0%;
+    }
+    .header .menu ul.pc li a{ padding: 5px 10px; }
+    .sombra{ 
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 999;
+    }
+    .owl-carousel .owl-nav button span{
+        line-height: 0px;
+    }
+}
