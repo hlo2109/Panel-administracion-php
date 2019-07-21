@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+body{
+    margin: 0px;
+    font-family: "Montserrat";
+    background: #f5f5f5;
+}
+.text-center{ text-align: center !important; }
+.text-left{ text-align: left !important; }
+.text-right{ text-align: right !important; }
+
+button{ font-family: "Montserrat";  line-height: inherit; font-size: inherit; }
+.btn{ display: inline-block; background: transparent; padding: 5px 20px; text-decoration: none; border:1px solid green; border-radius: 5px; color: green; transition: all .5s; }
+.btn:hover{ background: green; color:#fff; }
+.btn.green{ background: green; color:#fff; }
+.btn.green:hover{ background: transparent; color:green; }
+
+.diviniciosesion .container{ height: 100vh; display: flex; align-items: center; align-content:center; }
+.diviniciosesion .container .contcien{ width: 100%; }
+.diviniciosesion .container h1{ margin: 0px; text-align: center; font-size: 20px;}
+.diviniciosesion .container .contcien .cont{ max-width: 300px; display: block; margin: auto; }
+.diviniciosesion .container .contcien .cont form .form-group{ padding: 10px; }
+.diviniciosesion .container .contcien .cont form input{ height: 27px; padding-left: 10px; border-radius: 5px; border:1px solid green; vertical-align: bottom; width: 100%; outline: none; }
