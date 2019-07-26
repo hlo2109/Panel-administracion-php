@@ -11,11 +11,14 @@
                     $_SESSION["admin"]["id"] = $user["id"];
                     $_SESSION["admin"]["name"] = $user["name"];
                     $_SESSION["admin"]["email"] = $user["email"];
+                    $this->message(["Inicio sesión"]);
                     return ["state"=>true,"msg"=>"Inicio sesión"];
                 } else{
+                    $this->message(["Error contraseña"], false);
                     return ["state"=>false,"msg"=>"Error contraseña"];
                 }
-            } else{                
+            } else{
+                $this->message(["Email no existe"], false);        
                 return ["state"=>false,"msg"=>"Email no existe"];
             }
         }

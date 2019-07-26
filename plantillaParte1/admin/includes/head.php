@@ -1,4 +1,5 @@
 <?php 
+    require "controladores/union.php";
     $menu = $_SERVER['PHP_SELF'];
     $menu = explode("/",$menu);
     $menu = end($menu);

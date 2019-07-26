@@ -37,9 +37,9 @@
             <i class="fas fa-user-astronaut"></i>
         </div>
         <div class="txt">
-            Bienvenido, Administrador
+            Bienvenido, <?php echo $_SESSION["admin"]["name"]; ?>
             <br>
-            <span>ejemplo@ejemplo.com</span>
+            <span><?php echo $_SESSION["admin"]["email"]; ?></span>
         </div>
         <div class="icos">
             <a href=""><i class="fas fa-edit"></i>Editar</a>

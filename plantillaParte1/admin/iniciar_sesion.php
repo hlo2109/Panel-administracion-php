@@ -14,9 +14,11 @@
     if(isset($_POST["email"])){
         $resp = $sesion->login($_POST);
         if($resp["state"]){
-            header("location: index.php");
+            header("location: index.php");            
+        } else{
+            header("location: iniciar_sesion.php");
         }
-        exit;
+        exit;        
     }
 ?>
 
@@ -26,6 +28,7 @@
             <div class="contcien">
                 <div class="cont">
                     <h1>Iniciar sesión<br>hlo21.com</h1>
+                    <?php include "helpers/messageError.php"; ?>
                     <form action="" method="POST" >
                         <div class="form-group">
                             <label for="email">Email</label>
