@@ -33,4 +33,14 @@ $(function () {
             // imageUploadURL: 'componentes/uploadFiles.php'
         })
     }
+
+    if($(".messageSuccess").length > 0){
+        setTimeout(function(){
+            $(".messageSuccess").fadeOut(function(){
+                $(this).remove();
+            })
+        }, 5000)
+    }
+   
+
 })

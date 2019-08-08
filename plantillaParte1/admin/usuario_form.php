@@ -9,8 +9,8 @@
             header("location: usuario_form.php");
         }
         exit;
-    }
-
+    } 
+    $config->message([ 'Mensaje correcto', 'Mensaje correcto 2' ]);
 ?>
 
 <body>
@@ -22,9 +22,8 @@
                 <a href="" class="active"><i class="fa fa-home"></i> Inicio</a> <i class="fas fa-angle-right"></i> <a href="usuarios.php"><i class="fas fa-users-cog" aria-hidden="true"></i> Usuarios</a> <i class="fas fa-angle-right"></i> <span>Crear usuario</span>                
             </div>
             <div class="divContInterno">
-                <div class="formularios"> 
-                    <?php include "helpers/messageError.php"; ?>
-                    <form action=""  class="pequenio" method="POST">
+                <div class="formularios">                     
+                    <form action=""  class="pequenio" method="POST">                        
                         <div class="form-group">
                             <label for="profile">Perfil</label>
                             <select id="profile" name="profile">
@@ -46,10 +45,12 @@
                             <label for="password">Contraseña</label>
                             <input type="password" id="password" name="password" placeholder="Contraseña">
                         </div>
+                        <?php include "helpers/messageError.php"; ?>
                         <div class="form-group text-center" >
                             <a href="usuarios.php" class="btn">Cancelar</a>
                             <button class="btn green">Guardar</button> 
-                        </div>                       
+                        </div>   
+                                            
                     </form>
                 </div>
             </div>

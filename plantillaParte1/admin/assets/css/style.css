@@ -91,6 +91,12 @@ button{ font-family: "Montserrat";  line-height: inherit; font-size: inherit; }
 
 .formularios .loadimg{ cursor: pointer;; display: block; text-align: center;  border:1px solid #ccc; border-radius: 10px; max-width: 200px; margin: auto; font-size: 100px; padding: 30px; color: #ccc; }
 .formularios .loadimg input{ display: none; }
+ 
+.messageError{ list-style: none; padding: 0px; margin: 0px; }
+.messageError li { padding: 5px; color: red;  }
+
+.messageSuccess{ list-style: none; padding: 0px; margin: 0px; background: green; position: fixed; bottom: 20px; right: 20px; padding: 10px; }
+.messageSuccess li { padding: 5px; color: #fff;  }
 
 @media(max-width:768px){
     body{ font-size: 12px; } 
