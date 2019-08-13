@@ -1,15 +1,21 @@
 <?php include "includes/head.php"; ?>
 
 <?php 
+    if(!isset($_GET["id"]) || $_GET["id"]==''){
+        header("location: usuarios.php");
+    }
+    
     if(isset($_POST["profile"])){
-        $response = $users->create($_POST);
+        $response = $users->update($_POST,$_GET["id"]);
         if($response["state"]){ 
             header("location: usuarios.php");
         } else{ 
-            header("location: usuario_form.php");
+            header("location: usuario_form_update.php?id=".$_GET["id"]);
         }
         exit;
     }  
+
+    $user = $users->user($_GET["id"]);
 ?>
 
 <body>
@@ -28,17 +34,19 @@
                             <select id="profile" name="profile">
                                 <option value="">---Seleccionar---</option>
                             <?php foreach ($profiles->select() as $key => $profile) { ?>
-                                <option value="<?php echo $profile["id"] ?>"><?php echo $profile["name"] ?></option>
+                                <option value="<?php echo $profile["id"] ?>" <?php echo ($profile["id"]==$user["id_profile"])?'selected':'' ?> >
+                                    <?php echo $profile["name"] ?>
+                                </option>
                             <?php } ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="name">Nombre:</label>
-                            <input type="name" id="name" name="name" placeholder="Nombre">
+                            <input type="name" id="name" name="name" value="<?php echo $user["name"] ?>" placeholder="Nombre">
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" placeholder="Email">
+                            <input type="text" id="email" value="<?php echo $user["email"] ?>" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña</label>

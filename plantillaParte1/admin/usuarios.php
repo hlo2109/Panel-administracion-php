@@ -1,4 +1,11 @@
 <?php include "includes/head.php"; ?>
+<?php  
+    if(isset($_POST["action"]) && $_POST["action"]=="delete" ){
+        $response = $users->delete($_POST);  
+        header("location: usuarios.php"); 
+        exit;
+    }   
+?>
 <body>
     <?php include "includes/menu.php"; ?>
     <div class="contenido divinicio">
@@ -15,8 +22,8 @@
                                 <a href="usuario_form.php" class="btn green">Crear nuevo</a>
                             </div>
                             <div class="col-xs-6">
-                                <form action="">
-                                    <input type="text" placeholder="Buscar....">
+                                <form action="" method="get">
+                                    <input type="text" name="search" placeholder="Buscar....">
                                     <button class="btn">Buscar</button>
                                 </form>
                             </div>
@@ -28,21 +35,28 @@
                                 <tr>
                                     <th width="40px">Cod</th>
                                     <th>Nombre</th> 
+                                    <th>Email</th> 
                                     <th width="200">Perfil</th>
                                     <th width="90">Opciónes</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                    for ($i=0; $i < 10; $i++) {
+                                <?php  
+                                    $results =$users->list();
+                                    foreach ($results["data"] as $key => $item) {
                                 ?>
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td >Nombre</td> 
-                                    <td>Perfil</td>                                    
+                                    <td class="text-center"><?php echo $item["id"] ?></td>
+                                    <td ><?php echo $item["name"] ?></td> 
+                                    <td ><?php echo $item["email"] ?></td> 
+                                    <td><?php echo $item["profile"] ?></td>
                                     <td class="text-center">
-                                        <a href="" class="edit"><i class="fas fa-edit"></i></a>
-                                        <a href="" class="delete"><i class="fas fa-trash"></i></a>
+                                        <a href="usuario_form_update.php?id=<?php echo $item["id"] ?>" class="edit"><i class="fas fa-edit"></i></a>
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="id" value="<?php echo $item["id"] ?>" >
+                                            <input type="hidden" name="action" value="delete" >
+                                            <button class="delete"><i class="fas fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 <?php } ?>
@@ -50,12 +64,30 @@
                         </table>
                     </div>
                     <div class="paginador">
+                        <?php 
+                            $search = isset($_GET["search"])?$_GET["search"]:"";
+                            $params = "&search=".$search;
+                        ?>
                         <ul>
-                            <li><a href="" class="btn">Anterior</a></li>
-                            <?php for ($i=0; $i < 10; $i++) {  ?>
-                            <li class="<?php echo ($i==5)?'active':'' ?>"><a href="" class="btn"><?php echo $i ?></a></li>
+                            <?php 
+                                if($results["paginaAnterior"]){
+                            ?>
+                                <li><a href="usuarios.php?pag=<?php echo $results["paginaAnterior"].$params; ?>" class="btn">Anterior</a></li>
                             <?php } ?>
-                            <li><a href="" class="btn">Siguiente</a></li>
+
+                            <?php for ($i=1; $i <= $results["totalPaginas"]; $i++) {  ?>
+
+                            <li class="<?php echo ($i==$results["pag"])?'active':'' ?>">
+                                <a href="usuarios.php?pag=<?php echo $i.$params; ?>" class="btn"><?php echo $i ?></a>
+                            </li>
+
+                            <?php } ?>
+
+                            <?php 
+                                if($results["paginaSiguiente"]){
+                            ?>
+                                <li><a href="usuarios.php?pag=<?php echo $results["paginaSiguiente"].$params; ?>" class="btn">Siguiente</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

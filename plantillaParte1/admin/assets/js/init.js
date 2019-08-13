@@ -42,5 +42,11 @@ $(function () {
         }, 5000)
     }
    
+    $(".divTable table td form").submit(function(){
+        if(!confirm("Seguro que desea continuar?")){
+            return false;
+        }
+
+    })
 
 })

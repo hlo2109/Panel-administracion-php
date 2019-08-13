@@ -76,7 +76,9 @@ button{ font-family: "Montserrat";  line-height: inherit; font-size: inherit; }
 .divTable table tbody tr:nth-of-type(odd) { background-color: rgba(0,0,0,.05); }
 .divTable table td a{ text-decoration: none; }
 .divTable table td .edit{ color: green; margin-right: 10px; display: inline-block; }
-.divTable table td .delete{ color: red; }
+.divTable table td .delete{ color: red; cursor: pointer; }
+.divTable table td form{ display: inline-block; }
+.divTable table td button.delete{ background: transparent; border:0px; padding: 0px; margin: 0px; display: inline-block; }
 .paginador{ text-align: center; }
 .paginador ul{ list-style: none; padding: 0px; }
 .paginador ul li{ display: inline-block; }
