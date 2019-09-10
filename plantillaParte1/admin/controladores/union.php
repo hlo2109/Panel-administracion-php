@@ -21,4 +21,7 @@
     require "class/sesion.php";
     require "class/profiles.php";
     require "class/users.php";
+    require "class/messages.php";
+    require "class/categories.php";
+    require "class/content.php";
 ?>

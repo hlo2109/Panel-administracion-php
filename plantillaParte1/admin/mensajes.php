@@ -1,4 +1,11 @@
 <?php include "includes/head.php"; ?>
+<?php  
+    if(isset($_POST["action"]) && $_POST["action"]=="delete" ){
+        $response = $message->delete($_POST);  
+        header("location: mensajes.php"); 
+        exit;
+    }   
+?>
 <body>
     <?php include "includes/menu.php"; ?>
     <div class="contenido divinicio">
@@ -13,7 +20,7 @@
                         <div class="row"> 
                             <div class="col-xs-12">
                                 <form action="">
-                                    <input type="text" placeholder="Buscar....">
+                                    <input type="text" name="search" placeholder="Buscar....">
                                     <button class="btn">Buscar</button>
                                 </form>
                             </div>
@@ -33,34 +40,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                    for ($i=0; $i < 10; $i++) {
+                                <?php  
+                                    $results =$message->list();
+                                    foreach ($results["data"] as $key => $item) { 
                                 ?>
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td >Nombre</td>
-                                    <td >Asunto</td>
-                                    <td >ejemplo@ejemplo.com</td>
-                                    <td >Teléfono</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam possimus odio asperiores totam consectetur adipisci optio nesciunt eos.</td>  
-                                    <td class="text-center">
-                                        <a href="" class="edit"><i class="fas fa-edit"></i></a>
-                                        <a href="" class="delete"><i class="fas fa-trash"></i></a>
+                                    <td class="text-center"><?php echo $item["id"] ?></td>
+                                    <td ><?php echo $item["name"] ?></td>
+                                    <td ><?php echo $item["affair"] ?></td>
+                                    <td ><?php echo $item["email"] ?></td>
+                                    <td ><?php echo $item["phone"] ?></td>
+                                    <td ><?php echo $item["message"] ?></td>
+                                    <td class="text-center"> 
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="id" value="<?php echo $item["id"] ?>" >
+                                            <input type="hidden" name="action" value="delete" >
+                                            <button class="delete"><i class="fas fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="paginador">
-                        <ul>
-                            <li><a href="" class="btn">Anterior</a></li>
-                            <?php for ($i=0; $i < 10; $i++) {  ?>
-                            <li class="<?php echo ($i==5)?'active':'' ?>"><a href="" class="btn"><?php echo $i ?></a></li>
-                            <?php } ?>
-                            <li><a href="" class="btn">Siguiente</a></li>
-                        </ul>
-                    </div>
+                    <?php $page = "mensajes.php"; include "includes/pagination.php" ?>
                 </div>
             </div>
         </div>

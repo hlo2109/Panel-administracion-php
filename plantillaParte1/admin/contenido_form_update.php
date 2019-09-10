@@ -1,14 +1,19 @@
 <?php include "includes/head.php"; ?>
 <?php 
+    if(!isset($_GET["id"]) || $_GET["id"]==''){
+        header("location: contenidos.php");
+    }
     if(isset($_POST["name"])){
-        $response = $content->create($_POST);
+        $response = $content->update($_POST,$_GET['id']);
         if($response["state"]){ 
             header("location: contenidos.php");
-        } else{ 
-            header("location: contenido_form.php");
+        } else{
+            header("location: contenido_form_update.php");
         }
         exit;
-    }  
+    }
+
+    $cont = $content->select($_GET["id"]);
 ?>
 <body>
     <?php include "includes/menu.php"; ?>
@@ -25,18 +30,18 @@
                             <div class="col-xs-12 col-sm-8">                                
                                 <div class="form-group">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="nombre" name="name" placeholder="Nombre">
+                                    <input type="nombre" name="name" value="<?php echo $cont["name"] ?>" placeholder="Nombre">
                                 </div>
                                 <div class="form-group">
                                     <label for="slug">Url amigable:</label>
-                                    <input type="slug" name="slug" placeholder="Slug">
+                                    <input type="slug" value="<?php echo $cont["slug"] ?>" name="slug" placeholder="Slug">
                                 </div>
                                 <div class="form-group">
                                     <label for="categoria">Categoría</label>
                                     <select id="categoria" name="id_category">
                                         <option value="">Seleccionar Categoría</option>
                                         <?php foreach ($categories->todo() as $key => $item) { ?>
-                                            <option value="<?php echo $item["id"] ?>" >
+                                            <option <?php echo ($item["id"]==$cont["id_category"])?'selected':'' ?> value="<?php echo $item["id"] ?>" >
                                                 <?php echo ($item["father"]!=0)?'----':'' ?>
                                                 <?php echo $item["name"] ?>
                                             </option>
@@ -45,13 +50,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="contenido">Contenido:</label>
-                                    <textarea id="contenido" name="content" class="editor"></textarea>
+                                    <textarea id="contenido" name="content" class="editor"><?php echo $cont["content"] ?></textarea>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-4">                                
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea id="descripcion" name="description"></textarea>
+                                    <textarea id="descripcion" name="description"><?php echo $cont["description"] ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Imagen</label>

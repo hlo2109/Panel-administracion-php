@@ -55,7 +55,7 @@
                     "password"=>$this->pass($data["password"])
                 ];
             }
-            self::$db->update("users",$send,["id"=>$id]);
+            self::$db->update("users", $send, ["id"=>$id]);
 
             $error = self::$db->error(); 
             if($error[1]){ 

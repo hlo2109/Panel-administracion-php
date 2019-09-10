@@ -1,14 +1,20 @@
 <?php include "includes/head.php"; ?>
 <?php 
+    if(!isset($_GET["id"]) || $_GET["id"]==''){
+        header("location: categorias.php");
+    }
+
     if(isset($_POST["name"])){
-        $response = $categories->create($_POST);
+        $response = $categories->update($_POST, $_GET['id']);
         if($response["state"]){ 
             header("location: categorias.php");
         } else{ 
-            header("location: categoria_form.php");
+            header("location: categoria_form_update.php");
         }
         exit;
-    }  
+    } 
+    
+    $categorie = $categories->select($_GET["id"]);
 ?>
 
 <body>
@@ -24,28 +30,30 @@
                     <form action="" method="POST" class="pequenio">
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <input type="nombre" name="name" placeholder="Nombre">
+                            <input type="nombre" value="<?php echo $categorie["name"] ?>" name="name" placeholder="Nombre">
                         </div>
                         <div class="form-group">
                             <label for="slug">Slug:</label>
-                            <input type="slug" name="slug" placeholder="Slug">
+                            <input type="slug" name="slug" value="<?php echo $categorie["slug"] ?>" placeholder="Slug">
                         </div>
+                        <?php if($categorie["father"]!=0): ?>
                         <div class="form-group">
                             <label for="padre">Padre:</label>
                             <select name="father" id="padre">
                                 <option value=''>Seleccionar</option>
                                 <?php 
-                                    foreach ($categories->listFathers() as $key => $item) {
+                                    foreach ($categories->listFathers($_GET['id']) as $key => $item) {
                                 ?>
-                                    <option value="<?php echo $item["id"] ?>" ><?php echo $item['name'] ?></option>
+                                    <option <?php echo ($categorie["father"]==$item["id"])?'selected':'' ?> value="<?php echo $item["id"] ?>" ><?php echo $item['name'] ?></option>
                                 <?php
                                     }
                                 ?>
                             </select>
                         </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea name="description" id="descripcion"></textarea>
+                            <textarea name="description" id="descripcion"><?php echo $categorie["description"] ?></textarea>
                         </div>
                         <?php include "helpers/messageError.php"; ?>
                         <div class="form-group text-center" >
