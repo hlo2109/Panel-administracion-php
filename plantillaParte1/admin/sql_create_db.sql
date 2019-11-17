@@ -64,17 +64,20 @@ CREATE TABLE messages(
     affair VARCHAR(140) NOT NULL,
     message VARCHAR(500) NOT NULL,
     PRIMARY KEY(id)
-);
-CREATE TABLE images(
-    id INT AUTO_INCREMENT,
-    title VARCHAR(250) NULL,
-    alt VARCHAR(250) NULL,
-    url VARCHAR(250) NOT NULL,
-    PRIMARY KEY(id)
-);
+); 
+
 CREATE TABLE contents_images(
     id_content INT NOT NULL,
     id_image INT NOT NULL,
     FOREIGN KEY(id_content) REFERENCES contents(id),
     FOREIGN KEY(id_image) REFERENCES images(id)
+);
+
+CREATE TABLE multimedia(
+    id_content INT NOT NULL,
+    image VARCHAR(250) NOT NULL,
+    ext VARCHAR(5) NOT NULL,
+    size float NOT NULL,
+    date_create DATETIME,
+    PRIMARY KEY(id)
 );
