@@ -18,6 +18,7 @@
         'password' => ''
     ]);
     require "class/config.php";
+    require "class/multimedia.php";
     require "class/sesion.php";
     require "class/profiles.php";
     require "class/users.php";

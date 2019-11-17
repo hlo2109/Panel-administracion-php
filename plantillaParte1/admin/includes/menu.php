@@ -49,6 +49,7 @@
     <div class="listmenu">
         <ul>
             <li class="<?php echo ($menu=="index.php")?'active':'' ?>"><a href="index.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+            <li class="<?php echo ($menu=="multimedia.php")?'active':'' ?>"><a href="multimedia.php"><i class="fas fa-play"></i> <span>Multimedia</span></a></li>
             <li class="<?php echo ($menu=="mensajes.php")?'active':'' ?>"><a href="mensajes.php"><i class="fas fa-envelope"></i> <span>Mensajes</span></a></li>
             <li class="<?php echo ($menu=="categorias.php")?'active':'' ?>"><a href="categorias.php"><i class="fas fa-biohazard"></i> <span>Categorías</span></a></li>
             <li class="<?php echo ($menu=="contenidos.php")?'active':'' ?>"><a href="contenidos.php"><i class="fab fa-contao"></i> <span>Contenidos</span></a></li>

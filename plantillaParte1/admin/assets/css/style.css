@@ -100,6 +100,24 @@ button{ font-family: "Montserrat";  line-height: inherit; font-size: inherit; }
 .messageSuccess{ list-style: none; padding: 0px; margin: 0px; background: green; position: fixed; bottom: 20px; right: 20px; padding: 10px; }
 .messageSuccess li { padding: 5px; color: #fff;  }
 
+
+.loadFiles { text-align: center; padding-top: 20px; padding-bottom: 50px; }
+.loadFiles .btn{ text-align: center; border-style: dashed; width: 100%; max-width: 500px; padding-top: 20px; padding-bottom: 20px; }
+.loadFiles input{ display: none; }
+
+.listMultimedia{ display: flex; flex-wrap: wrap; }
+.listMultimedia .item{ padding: 5px; flex: 1 0 200px; width: 200px; max-width: 200px; }
+.listMultimedia .cont{ height: 200px; display: block; background-position: center center; background-size: contain; background-repeat: no-repeat; background-color:#e4e4e4; position: relative; display: flex; vertical-align: middle; align-items: center; justify-content: center; overflow: hidden; }
+.listMultimedia .cont .size{ position: absolute; top: 0px; left: 0px; padding: 5px; font-size: 10px; color:#fff; background: rgba(0,0,0,.8); }
+.listMultimedia .cont .ico{ font-size: 50px; color: #cacaca; text-transform: uppercase; font-weight: bold; }
+.listMultimedia .cont .options{ position: absolute; width: 100%; bottom:0px; left: 100%; text-align: right; transition: 0.5s all; }
+.listMultimedia .cont .options form{ display: inline-block; }
+.listMultimedia .cont .options form button{ background: transparent; padding: 0px; color:#fff; border:0px; margin-left: 10px; }
+.listMultimedia .cont .options div{ padding: 10px 5px; background: rgba(0,0,0,.8); text-align: center; }
+.listMultimedia .cont .options div a{ margin-left: 10px; margin-right: 10px; color:#fff; }
+.listMultimedia .cont:hover .options{ left: 0px; }
+
+
 @media(max-width:768px){
     body{ font-size: 12px; } 
 }
