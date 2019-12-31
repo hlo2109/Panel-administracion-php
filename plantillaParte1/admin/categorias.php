@@ -19,7 +19,9 @@
                     <div class="filtro">                        
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="categoria_form.php" class="btn green">Crear nuevo</a>
+                                <?php if($config->menu_profile('categoria_form.php')): ?>
+                                    <a href="categoria_form.php" class="btn green">Crear nuevo</a>
+                                <?php endif; ?>
                             </div>
                             <div class="col-xs-6">
                                 <form action="">
@@ -50,12 +52,16 @@
                                         <?php echo $item["name"] ?>
                                     </td>
                                     <td class="text-center" width="90">
+                                        <?php if($config->menu_profile('categoria_form_update.php')): ?>
                                         <a href="categoria_form_update.php?id=<?php echo $item["id"] ?>" class="edit"><i class="fas fa-edit"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($config->menu_profile('categoria_form.php')): ?>
                                         <form action="" method="POST">
                                             <input type="hidden" name="id" value="<?php echo $item["id"] ?>" >
                                             <input type="hidden" name="action" value="delete" >
                                             <button class="delete"><i class="fas fa-trash"></i></button>
                                         </form>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <?php } ?>

@@ -1,7 +1,7 @@
 <?php 
     include "includes/head.php";
 ?>
-<body>
+<body class="fr-view">
     <?php 
         include "includes/menu.php";
     ?>

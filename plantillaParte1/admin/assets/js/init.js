@@ -29,8 +29,55 @@ $(function () {
         var editor = new FroalaEditor('.editor', {
             language: 'es',
             theme: 'dark',
-            height: 300,
-            // imageUploadURL: 'componentes/uploadFiles.php'
+            height: 300, 
+            // Upload
+            imageUploadParam: 'file',
+            imageUploadURL: 'lib/ajax_admin.php',
+            imageUploadMethod: 'POST',
+            imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
+
+            // Load
+            // Set page size.
+            imageManagerPageSize: 20,
+            // Set a scroll offset (value in pixels).
+            imageManagerScrollOffset: 10,
+            // Set the load images request URL.
+            imageManagerLoadURL: "lib/ajax_admin.php?cod=loadImages",
+            // Set the load images request type.
+            imageManagerLoadMethod: "GET",
+
+            // DELETE IMAGE
+            // Set the delete image request URL.
+            imageManagerDeleteURL: "lib/ajax_admin.php",
+            // Set the delete image request type.
+            imageManagerDeleteMethod: "GET",
+            // Additional delete params.
+            imageManagerDeleteParams: { cod: 'deleteImage'},
+
+            
+            events:{
+                // Insertar
+                'image.beforeUpload': function (images) {
+                    console.log(images);
+                  // Return false if you want to stop the image upload.
+                },
+                'image.uploaded': function (response) {
+                    console.log(response);
+                  // Image was uploaded to the server.
+                },
+                'image.inserted': function ($img, response) {
+                    console.log($img, response);
+                  // Image was inserted in the editor.
+                },
+                'image.replaced': function ($img, response) {
+                    // console.log($img, response);
+                  // Image was replaced in the editor.
+                },
+                'image.error': function (error, response) {
+                    console.log(error, response); 
+                },
+                // -----------------------------------------------
+            }
         })
     }
 

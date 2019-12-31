@@ -1,33 +1,23 @@
 <?php 
     include "includes/head.php";
 ?>
-<body>
+<body class="fr-view">
     <?php 
         include "includes/menu.php";
     ?>
     <div class="slider">
         <div class="container">
             <div class="owl-carousel owl-theme">
+                <?php 
+                    $sliders = $dba->select("contents","*",["id_category"=>16]);
+                    foreach ($sliders as $key => $item) {
+                ?>
                 <div class="item">
-                    <a href="">
-                        <img src="assets/images/banner1.jpg" alt="">
-                    </a>
+                    <?php if($item["description"]!=''){ ?><a href="<?php echo $item["description"] ?>" target="_blank"><?php } ?>
+                        <img src="images/<?php echo $item["image"] ?>" alt="">
+                    <?php if($item["description"]!=''){ ?></a><?php } ?>
                 </div>
-                <div class="item">
-                    <a href="">
-                        <img src="assets/images/banner2.jpg" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="">
-                        <img src="assets/images/banner3.jpg" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="">
-                        <img src="assets/images/banner4.jpg" alt="">
-                    </a>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -36,20 +26,17 @@
             <h2>Últimas entradas</h2>
             <ul class="listblog row">
                 <?php 
-                    for ($i=1; $i <= 4; $i++) {
+                    $blogs = $dba->select("contents","*",["id_category"=>14, "LIMIT"=>4]);
+                    foreach ($blogs as $key => $item) {
                 ?>
                 <li class="item col-xs-12 col-sm-3">
-                    <a href="detalle_blog.php?nombre=<?php echo $i ?>">
+                    <a href="<?php echo $url_site; ?>blog/<?php echo $item["slug"] ?>/">
                         <div class="cont">
-                            <div class="img" style="background-image: url(assets/images/blog<?php echo $i ?>.jpg)"></div>
+                            <div class="img" style="background-image: url(images/<?php echo $item["image"] ?>)"></div>
                             <div class="text">
                                 <div class="txt">
-                                    <h3>Nombre <?php echo $i ?></h3>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga magni consequatur
-                                        nemo
-                                        placeat, quidem nulla ratione incidunt nihil consequuntur minus aliquam. Vel
-                                        deleniti
-                                        modi temporibus, explicabo architecto recusandae quisquam earum?</p>
+                                    <h3><?php echo $item["name"] ?></h3>
+                                    <p><?php echo $item["description"] ?></p>
                                     <span>Ver más</span>
                                 </div>
                             </div>
@@ -62,22 +49,14 @@
     </div>
     <div class="divparallax">
         <div class="container">
-            <h3>Parallax ejemplo</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium dicta ad velit
-                consectetur, ex enim itaque eligendi consequuntur quod modi dolorem qui. Quos cum deleniti molestiae
-                aspernatur, nostrum reiciendis?</p>
+            <?php 
+                $parallax = $dba->get("contents","*",["id_category"=>15, "id"=>28 ]);                    
+            ?>
+            <h3><?php echo $parallax["name"] ?></h3>
+            <?php echo $parallax["content"] ?>
         </div>
     </div>
-    <div class="divsuscribete">
-        <div class="container">
-            <h3>Suscribete</h3>
-            <form action="">
-                <input type="email" placeholder="Email">
-                <button><i class="fa fa-envelope"></i></button>
-            </form>
-            <p>Suscribete para optener notificaciónes de noticias en tu bandeja de entrada.</p>
-        </div>
-    </div>
+    
     <?php 
         include "includes/footer.php";
     ?>

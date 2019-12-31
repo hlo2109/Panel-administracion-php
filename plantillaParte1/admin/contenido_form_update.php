@@ -25,7 +25,7 @@
             </div>
             <div class="divContInterno">
                 <div class="formularios">
-                    <form action="" method="POST" >
+                    <form action="" method="POST" enctype="multipart/form-data" >
                         <div class="row">
                             <div class="col-xs-12 col-sm-8">                                
                                 <div class="form-group">
@@ -59,8 +59,21 @@
                                     <textarea id="descripcion" name="description"><?php echo $cont["description"] ?></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <textarea id="tags" name="tags"><?php echo $cont["tags"] ?></textarea>
+                                </div>
+                                <div class="form-group">
                                     <label>Imagen</label>
-                                    <label class="loadimg"><i class="far fa-file-image"></i><input type="file" name="image"></label>
+                                    <label class="loadimg">
+                                        <div class="vistaprevia">
+                                            <?php if($cont["image"]){ ?>
+                                            <img src="../images/<?php echo $cont["image"] ?>" >
+                                            <?php } else{ ?>
+                                            <i class="far fa-file-image"></i>
+                                            <?php } ?>
+                                        </div>
+                                        <input type="file" name="file" onchange="vistaPrevia(event)">
+                                    </label>
                                 </div>
                             </div>
                         </div>          
@@ -75,5 +88,23 @@
         </div>
     </div>
     <?php include "includes/footer.php"; ?>
+    <script>
+        function vistaPrevia(evt){ 
+            let file = evt.target.files;
+            file = file[0];
+            if( file.type.match('image.*') ){
+                let reader = new FileReader();
+                reader.onload = (function(e){
+                    return function(p){
+                        let imagen = p.target.result;
+                        $(".vistaprevia").html(`<image src="${imagen}" />`);
+                    }
+                })(file);
+                reader.readAsDataURL(file);
+            } else{
+                alert("El formato no es valido.");
+            }
+        }
+    </script>
 </body>
 </html>

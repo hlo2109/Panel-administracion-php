@@ -78,7 +78,7 @@
             }  
         }
         function list(){
-            $totalResultados = 2;
+            $totalResultados = 10;
             $pag = isset($_GET["pag"])?$_GET["pag"]:1;
             $search = isset($_GET["search"])?$_GET["search"]:null; 
             

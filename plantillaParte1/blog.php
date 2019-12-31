@@ -1,7 +1,7 @@
 <?php 
     include "includes/head.php";
 ?>
-<body>
+<body class="fr-view">
     <?php 
         include "includes/menu.php";
     ?>
@@ -10,25 +10,17 @@
             <h1 class="text-center">Blog</h1>
             <ul class="listblog row">
                 <?php 
-                    $numimg=0;
-                    for ($i=1; $i <= 50; $i++) {
-                        $numimg++;
-                        if($numimg>6){
-                            $numimg=1;
-                        }
+                    $blogs = $dba->select("contents","*",["id_category"=>14 ]);
+                    foreach ($blogs as $key => $item) {
                 ?>
                 <li class="item col-xs-12 col-sm-3">
-                    <a href="detalle_blog.php?nombre=<?php echo $i ?>">
+                    <a href="<?php echo $url_site; ?>blog/<?php echo $item["slug"] ?>/">
                         <div class="cont">
-                            <div class="img" style="background-image: url(assets/images/blog<?php echo $numimg ?>.jpg)"></div>
+                            <div class="img" style="background-image: url(<?php echo $url_site; ?>images/<?php echo $item["image"] ?>)"></div>
                             <div class="text">
                                 <div class="txt">
-                                    <h3>Nombre <?php echo $i ?></h3>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga magni consequatur
-                                        nemo
-                                        placeat, quidem nulla ratione incidunt nihil consequuntur minus aliquam. Vel
-                                        deleniti
-                                        modi temporibus, explicabo architecto recusandae quisquam earum?</p>
+                                    <h3><?php echo $item["name"] ?></h3>
+                                    <p><?php echo $item["description"] ?></p>
                                     <span>Ver más</span>
                                 </div>
                             </div>
@@ -39,17 +31,7 @@
             </ul>
         </div>
     </div>
-
-    <div class="divsuscribete">
-        <div class="container">
-            <h3>Suscribete</h3>
-            <form action="">
-                <input type="email" placeholder="Email">
-                <button><i class="fa fa-envelope"></i></button>
-            </form>
-            <p>Suscribete para optener notificaciónes de noticias en tu bandeja de entrada.</p>
-        </div>
-    </div>
+ 
     <?php 
         include "includes/footer.php";
     ?>

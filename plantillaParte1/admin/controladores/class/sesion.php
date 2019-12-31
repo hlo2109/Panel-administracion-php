@@ -11,6 +11,7 @@
                     $_SESSION["admin"]["id"] = $user["id"];
                     $_SESSION["admin"]["name"] = $user["name"];
                     $_SESSION["admin"]["email"] = $user["email"];
+                    $_SESSION["admin"]["profile"] = $user["id_profile"];
                     $this->message(["Inicio sesión"]);
                     return ["state"=>true,"msg"=>"Inicio sesión"];
                 } else{

@@ -17,6 +17,15 @@
                 return ["state"=>false];
             }  
 
+            $nameImage = "";
+            if(isset($_FILES["file"]) && $_FILES["file"]["name"]){
+                $tmp_name = $_FILES["file"]["tmp_name"];
+                $name = $_FILES["file"]["name"];
+                $size = $_FILES["file"]["size"];
+                $multimedia = new multimedia();
+                $nameImage = $multimedia->loadFile($tmp_name, $name, $size);
+            }
+
             self::$db->insert("contents",[
                 "id_user" => $_SESSION["admin"]["id"],
                 "name"=>$data["name"],
@@ -24,7 +33,8 @@
                 "id_category"=>$data["id_category"],
                 "content"=> $data["content"],
                 "description"=>$data["description"],
-                "image" => $data["image"],
+                "tags"=>$data["tags"],
+                "image" => $nameImage,
                 "date_create"=>date("Y-m-d H:i:s")
             ]);
             $error = self::$db->error(); 
@@ -51,16 +61,24 @@
                 $this->message($error,false); 
                 return ["state"=>false];
             }
-
-            self::$db->update("contents",[                
+            $dataSend = [                
                 "name"=>$data["name"],
                 "slug"=>$data["slug"],
                 "id_category"=>$data["id_category"],
                 "content"=> $data["content"],
                 "description"=>$data["description"],
-                "image" => $data["image"],
+                "tags"=>$data["tags"],
                 "date_update"=>date("Y-m-d H:i:s")
-            ], ["id"=>$id]);
+            ];
+            if(isset($_FILES["file"]) && $_FILES["file"]["name"]){
+                $tmp_name = $_FILES["file"]["tmp_name"];
+                $name = $_FILES["file"]["name"];
+                $size = $_FILES["file"]["size"];
+                $multimedia = new multimedia();
+                $nameImage = $multimedia->loadFile($tmp_name, $name, $size);
+                $dataSend += ["image"=>$nameImage];
+            }
+            self::$db->update("contents", $dataSend, ["id"=>$id]);
 
             $error = self::$db->error(); 
             if($error[1]){ 
@@ -85,7 +103,7 @@
         }
 
         function list(){
-            $totalResultados = 2;
+            $totalResultados = 10;
             $pag = isset($_GET["pag"])?$_GET["pag"]:1;
             $search = isset($_GET["search"])?$_GET["search"]:null; 
             
@@ -107,9 +125,8 @@
                 )             
                 order by ct.name asc  
                 ")
-            );
-
-            $totalPaginas = round(count($cantida)/$totalResultados);
+            ); 
+            $totalPaginas = ceil(count($cantida)/$totalResultados);
 
             $hasta = $pag * $totalResultados;
             $desde = $hasta - $totalResultados;

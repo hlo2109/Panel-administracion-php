@@ -1,32 +1,47 @@
 <?php 
     include "includes/head.php";
+    if(isset($_POST["name"]) && $_POST["name"]!=''){
+        $dba->insert("messages",[
+            "name"=>$_POST["name"],
+            "email"=>$_POST["email"],
+            "phone"=>$_POST["phone"],
+            "affair"=>$_POST["affair"],
+            "message"=>$_POST["message"],
+            "date_create"=>date("Y-m-d H:i:s")
+        ]);
+        ?>
+        <script>
+            alert("El mensaje a sido enviado correctamente, gracias por contactarnos.");
+            location.href="contacto.php?slug=contactenos";
+        </script>
+        <?php
+    }
 ?>
-<body>
+<body class="fr-view">
     <?php 
         include "includes/menu.php";
     ?>
     <div class="divcontacto">
         <div class="container">
-            <h1 class="text-center">Contáctenos</h1>
-            <p class="text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore et qui eligendi quae
-                expedita! Minima
-                quasi neque non laudantium nihil earum, architecto, suscipit, error consectetur dolorem alias deserunt
-                eum atque!</p>
-            <form action="">
+            <h1 class="text-center"><?php echo $info["name"] ?></h1>
+            <div class="text-center">
+                <?php echo $info["content"] ?>
+            </div>
+            <form action="" method="POST">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="form-control">
                             <div class="cont">
                                 <label for="nombre">Nombre*</label>
-                                <input id="nombre" type="text" placeholder="Nombre">
+                                <input id="nombre" type="text" name="name" placeholder="Nombre" required>
                             </div>
                             <div class="cont">
                                 <label for="email">Email*</label>
-                                <input id="email" type="email" placeholder="Email">
+                                <input id="email" type="email" name="email" placeholder="Email" required>
                             </div>
                             <div class="cont">
                                 <label for="telefono">Teléfono*</label>
-                                <input id="telefono" type="text" placeholder="Teléfono">
+                                <input id="telefono" type="text" name="phone" placeholder="Teléfono" required>
                             </div>
                         </div>
                     </div>
@@ -34,12 +49,12 @@
                         <div class="form-control">
                             <div class="cont">
                                 <label for="asunto">Asunto*</label>
-                                <input id="asunto" type="text" placeholder="Asunto">
+                                <input id="asunto" type="text" name="affair" placeholder="Asunto" required>
                             </div>
                             <div class="cont">
                                 <label for="mensaje">Mensaje*</label>
-                                <textarea id="mensaje" name="" id="" cols="30" rows="5"
-                                    placeholder="Mensaje"></textarea>
+                                <textarea id="mensaje" name="message" id="" cols="30" rows="5"
+                                    placeholder="Mensaje" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -53,18 +68,7 @@
 
             </form>
         </div>
-    </div>
-
-    <div class="divsuscribete">
-        <div class="container">
-            <h3>Suscribete</h3>
-            <form action="">
-                <input type="email" placeholder="Email">
-                <button><i class="fa fa-envelope"></i></button>
-            </form>
-            <p>Suscribete para optener notificaciónes de noticias en tu bandeja de entrada.</p>
-        </div>
-    </div>
+    </div> 
     <?php 
         include "includes/footer.php";
     ?>
