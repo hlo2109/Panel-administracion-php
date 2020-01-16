@@ -9,10 +9,19 @@
             "message"=>$_POST["message"],
             "date_create"=>date("Y-m-d H:i:s")
         ]);
+        $mensaje = "
+            Nombre: $_POST[name] </br>
+            Email: $_POST[email] </br>
+            Teléfono: $_POST[phone] </br>
+            Asunto: $_POST[affair] </br>
+            Mensaje: $_POST[message] </br>
+        ";
+
+        sendEmail("dev@hlo21.com","Nuevo contacto",$mensaje);
         ?>
         <script>
             alert("El mensaje a sido enviado correctamente, gracias por contactarnos.");
-            location.href="contacto.php?slug=contactenos";
+            location.href="<?php echo $url_site ?>contactenos/";
         </script>
         <?php
     }

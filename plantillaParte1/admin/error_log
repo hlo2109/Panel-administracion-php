@@ -1,0 +1,10 @@
+[15-Jan-2020 12:30:18 UTC] PHP Notice:  Undefined index: name in /home/hlo2109/public_html/pruebasyoutube/admin/includes/menu.php on line 40
+[15-Jan-2020 12:30:18 UTC] PHP Notice:  Undefined index: email in /home/hlo2109/public_html/pruebasyoutube/admin/includes/menu.php on line 42
+[15-Jan-2020 12:47:39 UTC] PHP Notice:  Undefined index: name in /home/hlo2109/public_html/pruebasyoutube/admin/includes/menu.php on line 40
+[15-Jan-2020 12:47:39 UTC] PHP Notice:  Undefined index: email in /home/hlo2109/public_html/pruebasyoutube/admin/includes/menu.php on line 42
+[15-Jan-2020 12:56:36 UTC] PHP Notice:  Undefined variable: destino in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81
+[15-Jan-2020 12:56:36 UTC] PHP Notice:  Undefined variable: asunto in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81
+[15-Jan-2020 12:56:41 UTC] PHP Notice:  Undefined variable: destino in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81
+[15-Jan-2020 12:56:41 UTC] PHP Notice:  Undefined variable: asunto in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81
+[15-Jan-2020 12:57:15 UTC] PHP Notice:  Undefined variable: destino in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81
+[15-Jan-2020 12:57:15 UTC] PHP Notice:  Undefined variable: asunto in /home/hlo2109/public_html/pruebasyoutube/admin/controladores/class/config.php on line 81

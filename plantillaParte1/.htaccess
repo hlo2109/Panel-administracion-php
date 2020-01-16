@@ -5,4 +5,4 @@ RewriteEngine On
 RewriteRule ^nosotros/$ nosotros.php?slug=nosotros [L]
 RewriteRule ^blog/$ blog.php?slug=blog [L]
 RewriteRule ^blog/(.*)/$ detalle_blog.php?slug=$1 [L]
-RewriteRule ^contactenos/$ blog.php?slug=contactenos [L]
+RewriteRule ^contactenos/$ contacto.php?slug=contactenos [L]

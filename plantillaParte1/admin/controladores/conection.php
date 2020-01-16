@@ -1,5 +1,5 @@
 <?php 
-    $url_site = "http://php.test/git/plantillaPHP/plantillaParte1/";
+    $url_site = "http://pruebas.hlo21.com/";
 
     require "librerias/Medoo.php";
     use Medoo\Medoo; 

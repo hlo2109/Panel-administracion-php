@@ -29,6 +29,7 @@
                 <div class="cont">
                     <h1>Iniciar sesión<br>hlo21.com</h1>
                     <?php include "helpers/messageError.php"; ?>
+                    <?php include "helpers/messageSuccess.php"; ?>
                     <form action="" method="POST" >
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -41,7 +42,7 @@
                         <div class="form-group text-center" >
                             <button class="btn green">Iniciar sesión</button>
                             <br><br>
-                            <a href="">Recuperar contraseña</a>
+                            <a href="recuperar_contrasenia.php">Recuperar contraseña</a>
                         </div>
                     </form>
                 </div>

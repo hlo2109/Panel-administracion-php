@@ -1,0 +1,5 @@
+[15-Jan-2020 13:00:24 UTC] PHP Notice:  Undefined variable: config in /home/hlo2109/public_html/pruebasyoutube/contacto.php on line 19
+[15-Jan-2020 13:00:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function sendEmail() on null in /home/hlo2109/public_html/pruebasyoutube/contacto.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/hlo2109/public_html/pruebasyoutube/contacto.php on line 19

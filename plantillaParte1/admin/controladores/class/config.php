@@ -59,7 +59,7 @@
             $_SESSION["admin"]["profile"] = isset($_SESSION["admin"]["profile"])?$_SESSION["admin"]["profile"]:'';
             $file = explode("/", $_SERVER['PHP_SELF']);
             $file = end($file);
-            if($file != 'iniciar_sesion.php' && $file != 'ajax_admin.php'){
+            if($file != 'iniciar_sesion.php' && $file != 'recuperar_contrasenia.php' && $file != 'ajax_admin.php'){
                 $data = $this->menu_profile($file);
                 if($data){
                     
@@ -67,6 +67,18 @@
                     header("location: iniciar_sesion.php");
                 }
             }
+        }
+
+        function sendEmail($to,$subject,$mensaje){
+            $OB="----=_OuterBoundary_000";
+            $headers ="MIME-Version: 1.0\r\n";
+            $headers.="From: hlo21.com <dev@hlo21.com>\n";
+            // $headers.="To: ".$destino." <".$destino.">\n";
+            // $headers.="X-Priority: 1\n";
+            // $headers.="X-MSMail-Priority: High\n";
+            $headers.="X-Mailer: My PHP Mailer\n";
+            $headers.="Content-Type: text/html;\n\t charset=utf-8\r\n boundary=\"".$OB."\"\n";
+            return mail($to, $subject, $mensaje, $headers);
         }
 
     }
