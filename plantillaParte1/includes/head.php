@@ -1,6 +1,7 @@
 <?php
+    
     require "admin/controladores/conection.php";
-    require "admin/controladores/web/functions.php";
+    require "admin/controladores/web/functions.php"; 
     $menu = $_SERVER['PHP_SELF'];
     $menu = explode("/",$menu);
     $menu = end($menu);
