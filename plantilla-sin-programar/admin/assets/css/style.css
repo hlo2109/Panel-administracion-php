@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+body{
+    margin: 0px;
+    font-family: "Montserrat";
+    background: #f5f5f5;
+}
+.pad-left{
+    padding-left: 20px;
+}
+.pad-right{
+    padding-right: 20px;
+}
+input{ box-sizing: border-box; }
+.text-center{ text-align: center !important; }
+.text-left{ text-align: left !important; }
+.text-right{ text-align: right !important; }
+
+button{ font-family: "Montserrat";  line-height: inherit; font-size: inherit; }
+.btn{ display: inline-block; background: transparent; padding: 5px 20px; text-decoration: none; border:1px solid green; border-radius: 5px; color: green; transition: all .5s; }
+.btn:hover{ background: green; color:#fff; }
+.btn.green{ background: green; color:#fff; }
+.btn.green:hover{ background: transparent; color:green; }
+
+.container{ width: 100%; }
+
+.divMenu{ position: fixed; left: 0px; top: 0px; background: #333; color:#fff; width: 250px; height: 100%; transition: all .5s; }
+.divMenu .icomenu{ position: absolute; right: 0px; top: 0px; background: #333; display: block; font-size: 44px; padding: 5px 12px; }
+.divMenu .header{ text-align: center; padding: 20px; border-bottom: 2px solid green; }
+.divMenu .header .img{ text-align: center; font-size: 50px; padding: 0px 10px; }
+.divMenu .header .img .contimg{ width: 80px; height: 80px; background-position: center center; background-size: cover; }
+.divMenu .header .txt{ padding: 10px 0px; }
+.divMenu .header .txt span{ font-size: 12px; }
+.divMenu .header .icos a{ margin-left: 10px; margin-right: 10px; }
+.divMenu a{ color:#fff; }
+.divMenu .listmenu ul{ list-style: none; padding: 0px; }
+.divMenu .listmenu ul li a{ padding: 10px; display: block; text-decoration: none; border-left: 10px solid transparent; border-bottom: 2px solid transparent; transition: all 1s; }
+.divMenu .listmenu ul li a i{ margin-right: 10px; }
+.divMenu .listmenu ul li.active a{ border-left: 10px solid green; border-bottom: 2px solid green;     border-top: 10px solid transparent; padding-top: 0px; }
+.divMenu .listmenu ul li:hover a{ border-bottom: 2px solid green; }
+
+.divMenu.active{ width: 50px; }
+.divMenu.active .header{ padding: 0px; padding-top: 68px;  }
+.divMenu.active .header .img{ padding: 0px; }
+.divMenu.active .txt, .divMenu.active .icos{ display: none; }
+.divMenu.active .listmenu ul li a{ position: relative; }
+.divMenu.active .listmenu ul li a span{  position: absolute; top: 11px; left: 107%; color: green; font-weight: bold; width: 0px; overflow: hidden; transition: all .5s; }
+.divMenu.active .listmenu ul li.active a{ top: 3px; }
+.divMenu.active .listmenu ul li:hover a span{ width: 100px; opacity: 1; }
+
+.titles{ text-align: right; background: #fff; margin: 0px; padding-top: 20px; padding-bottom: 20px; }
+.titles span{ display: inline-block; border-bottom: 10px solid green; border-left: 10px solid transparent; padding-left: 50px; }
+
+.migaPan{ padding: 10px 20px; }
+.migaPan a{ color:#333; text-decoration: none; }
+.migaPan a i{ color:green; }
+.migaPan span{  border-bottom: 1px solid green; }
+
+.headerMenu{ padding-left: 250px; transition: all .5s; background: #333; color:#fff; display: none; }
+.headerMenu.active{ padding-left: 50px; display: block; }
+.headerMenu .cont{ padding: 10px; text-align: right; }
+.headerMenu .cont .icos{ display: inline-block; }
+.headerMenu .cont .icos a{ color:#fff; margin-left: 10px; margin-right: 10px; }
+
+.contenido{ padding-left: 250px; transition: all .5s;  }
+.contenido.active{ padding-left: 50px; }
+.divContInterno{ padding: 20px;  }
+
+.divinicio .container img{ width: 100%; }
+
+.divTable .filtro form{ text-align: right; }
+.divTable .filtro form input{ height: 27px; padding-left: 10px; border-radius: 5px; border:1px solid green; vertical-align: bottom; max-width: 100%; }
+.divTable .conTable{ padding: 30px 0px; padding-bottom: 10px; overflow: hidden; overflow-x: auto; }
+.divTable table{ width: 100%; background: #fff;     border-collapse: collapse; }
+.divTable table thead th { vertical-align: bottom; border-bottom: 2px solid #dee2e6; }
+.divTable table td, .divTable table th { padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; }
+.divTable table tbody tr:nth-of-type(odd) { background-color: rgba(0,0,0,.05); }
+.divTable table td a{ text-decoration: none; }
+.divTable table td .edit{ color: green; margin-right: 10px; display: inline-block; }
+.divTable table td .delete{ color: red; }
+.paginador{ text-align: center; }
+.paginador ul{ list-style: none; padding: 0px; }
+.paginador ul li{ display: inline-block; }
+.paginador ul li a.btn{ padding: 5px 8px; }
+.paginador ul li.active a.btn{ background: green; color:#fff; }
+
+.formularios .pequenio{ max-width: 400px; margin: auto; }
+.formularios form .form-group{ padding: 10px; }
+.formularios form input{ height: 27px; padding-left: 10px; border-radius: 5px; border:1px solid green; vertical-align: bottom; width: 100%; outline: none;  }
+.formularios form textarea{ height: 100px; padding-left: 10px; border-radius: 5px; border:1px solid green; vertical-align: bottom; width: 100%; outline: none; }
+.formularios form select{ height: 31px; padding-left: 10px; border-radius: 5px; border:1px solid green; vertical-align: bottom; width: 100%; outline: none; }
+
+.formularios .loadimg{ cursor: pointer;; display: block; text-align: center;  border:1px solid #ccc; border-radius: 10px; max-width: 200px; margin: auto; font-size: 100px; padding: 30px; color: #ccc; }
+.formularios .loadimg input{ display: none; }
+
+@media(max-width:768px){
+    body{ font-size: 12px; } 
+}
